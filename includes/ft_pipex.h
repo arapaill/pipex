@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 11:36:23 by user42            #+#    #+#             */
-/*   Updated: 2021/08/05 14:42:15 by user42           ###   ########.fr       */
+/*   Updated: 2021/08/06 11:30:00 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,21 @@
 # include <fcntl.h>
 # include <sys/wait.h>
 
+# define STDIN 0
+# define STDOUT 1
+# define STDERR 2
+
 /*
 ** libft
 */
 void	ft_exit(char *msg);
 void	ft_putstr_fd(char *s, int fd);
+char	**ft_split(char const *s, char c);
 
 /*
 ** pipex
 */
-void    ft_pipex(int argc, char **argv);
+
+void	ft_pipex(char *cmd, char **env, int in);
+
 #endif
