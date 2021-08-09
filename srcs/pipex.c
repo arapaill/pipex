@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 11:33:07 by user42            #+#    #+#             */
-/*   Updated: 2021/08/06 13:36:48 by user42           ###   ########.fr       */
+/*   Updated: 2021/08/09 14:58:16 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,8 @@ void	ft_exec(char *cmd, char **env)
 	char	*path;
 
 	args = ft_split(cmd, ' ');
+	if (ft_strchr(args[0], '/') > -1)
+		path = args[0];
+	else
+		path = get_path(args[0], env);
 }

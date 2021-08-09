@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 11:36:23 by user42            #+#    #+#             */
-/*   Updated: 2021/08/06 12:03:09 by user42           ###   ########.fr       */
+/*   Updated: 2021/08/09 14:54:45 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 void	ft_exit(char *msg);
 void	ft_putstr_fd(char *s, int fd);
 char	**ft_split(char const *s, char c);
+char	*ft_strchr(const char *s, int c);
 
 /*
 ** pipex
