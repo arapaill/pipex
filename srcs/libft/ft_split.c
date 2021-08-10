@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 15:13:52 by user42            #+#    #+#             */
-/*   Updated: 2021/08/06 11:29:34 by user42           ###   ########.fr       */
+/*   Updated: 2021/08/10 09:51:56 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,6 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	array = malloc (sizeof (char *) * (countword(s, c) + 1));
 	if (!array)
-		error_manager();
+		ft_exit("Malloc error\n");
 	return (needspace(array, s, c, i));
 }

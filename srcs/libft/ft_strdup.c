@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/09 14:54:03 by user42            #+#    #+#             */
-/*   Updated: 2021/08/09 14:54:32 by user42           ###   ########.fr       */
+/*   Created: 2021/08/10 10:24:11 by user42            #+#    #+#             */
+/*   Updated: 2021/08/10 10:27:51 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_pipex.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strdup(const char *s)
 {
-	while (*s != '\0')
-	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s++;
-	}
-	if (*s == c)
-		return ((char *)s);
-	return (NULL);
+	char			*str;
+	unsigned int	n;
+
+	n = ft_strlen(s);
+	str = malloc((sizeof(char) * (n + 1)))
+	if (!str)
+		ft_exit("Error malloc\n");
+	ft_strlcpy(str, s, n + 1);
+	str[n] = '\0';
+	return (str);
 }

@@ -6,21 +6,22 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/05 11:29:21 by user42            #+#    #+#              #
-#    Updated: 2021/08/09 14:55:42 by user42           ###   ########.fr        #
+#    Updated: 2021/08/10 10:27:09 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 SRC = 	srcs/main.c srcs/pipex.c
-LIB_SRC = srcs/libft/ft_exit.c srcs/libft/ft_split.c srcs/libft/ft_strchr.c
+LIB_SRC = srcs/libft/ft_exit.c srcs/libft/ft_split.c srcs/libft/ft_strichr.c \
+		srcs/libft/ft_strncmp.c srcs/libft/ft_strlcpy.c srcs/libft/ft_strdup.c
 NAME = pipex
 LIB = ar rcs
 
 all : $(NAME)
 
 $(NAME):	
-			@$(CC) $(CFLAGS) ${SRC} srcs/main.c -o $(NAME)
+			@$(CC) $(CFLAGS) ${SRC} ${LIB_SRC} srcs/main.c -o $(NAME)
 			@echo "\033[32m[✓]\033[0m		[$(NAME) compiled]"
 
 %.o: %.c

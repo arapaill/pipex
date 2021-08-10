@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strichr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/05 11:57:15 by user42            #+#    #+#             */
-/*   Updated: 2021/08/05 11:57:45 by user42           ###   ########.fr       */
+/*   Created: 2021/08/09 14:54:03 by user42            #+#    #+#             */
+/*   Updated: 2021/08/10 10:08:21 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_pipex.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_strichr(const char *str, int c)
 {
-	while (*s)
-		write(1, s++, 1);
+	int	i;
+
+	i = 0;
+	while (str[i] && str[i] != c)
+		i++;
+	if (str[i] == c)
+		return (i);
+	return (-1);
 }

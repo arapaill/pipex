@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/05 11:33:43 by user42            #+#    #+#             */
-/*   Updated: 2021/08/10 14:00:30 by user42           ###   ########.fr       */
+/*   Created: 2021/08/10 09:46:24 by user42            #+#    #+#             */
+/*   Updated: 2021/08/10 09:47:22 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_pipex.h"
 
-void	ft_putstr(char *s)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	while (*s)
-		write(1, s++, 1);
-}
+	size_t	i;
 
-void	ft_exit(char *msg, char *name)
-{
-	ft_putstr("pipex : ");
-	ft_putstr(msg);
-	if (name)
-		ft_putstr(name);
-	exit(0);
+	i = 0;
+	if (n == 0)
+		return (0);
+	if (s1[0] == '\0' || s2[0] == '\0')
+		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	while (i < n - 1 && s1[i] != '\0' && s2[i] != '\0')
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
