@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 11:36:23 by user42            #+#    #+#             */
-/*   Updated: 2021/08/10 14:01:04 by user42           ###   ########.fr       */
+/*   Updated: 2021/08/10 16:46:01 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int		ft_strichr(const char *s, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 char	*ft_strdup(const char *s);
+size_t	ft_strlen(const char *str);
 
 /*
 ** pipex

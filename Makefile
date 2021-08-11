@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/05 11:29:21 by user42            #+#    #+#              #
-#    Updated: 2021/08/10 10:27:09 by user42           ###   ########.fr        #
+#    Updated: 2021/08/11 10:52:25 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ LIB = ar rcs
 all : $(NAME)
 
 $(NAME):	
-			@$(CC) $(CFLAGS) ${SRC} ${LIB_SRC} srcs/main.c -o $(NAME)
+			@$(CC) $(CFLAGS) ${SRC} ${LIB_SRC} -o $(NAME)
 			@echo "\033[32m[✓]\033[0m		[$(NAME) compiled]"
 
 %.o: %.c
@@ -34,3 +34,4 @@ fclean:	clean
 			@rm -f $(NAME)
 			
 re:			fclean all
+

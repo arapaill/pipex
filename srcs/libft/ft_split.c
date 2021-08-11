@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 15:13:52 by user42            #+#    #+#             */
-/*   Updated: 2021/08/10 09:51:56 by user42           ###   ########.fr       */
+/*   Updated: 2021/08/10 16:15:10 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	all_free(char **array, int k)
 	}
 	free(array);
 	array = NULL;
-	ft_exit("Malloc error\n");
+	ft_exit("Malloc error\n", NULL);
 }
 
 static int	countword(char const *s, char c)
@@ -83,6 +83,6 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	array = malloc (sizeof (char *) * (countword(s, c) + 1));
 	if (!array)
-		ft_exit("Malloc error\n");
+		ft_exit("Malloc error\n", NULL);
 	return (needspace(array, s, c, i));
 }

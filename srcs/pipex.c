@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 11:33:07 by user42            #+#    #+#             */
-/*   Updated: 2021/08/10 14:00:32 by user42           ###   ########.fr       */
+/*   Updated: 2021/08/11 10:29:06 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@ void	ft_pipex(char *cmd, char **env, int in)
 	int		pipefd[2];
 
 	if (pipe(pipefd) == -1)
-		ft_exit("Failed to create a pipe\n");
+		ft_exit("Failed to create a pipe\n", NULL);
 	pid = fork();
-	if (!pid)
-		ft_exit("Failed to fork\n");
 	if (pid)
 	{
 		close(pipefd[1]);
@@ -33,7 +31,7 @@ void	ft_pipex(char *cmd, char **env, int in)
 		close(pipefd[0]);
 		dup2(pipefd[1], STDOUT);
 		if (in == STDIN)
-			ft_exit("failed to dup2\n");
+			ft_exit("failed to dup2\n", NULL);
 		else
 			ft_exec(cmd, env);
 	}
@@ -47,7 +45,7 @@ char	*cut(char *str, size_t size)
 	i = 0;
 	array = malloc(sizeof(char) * (size + 1));
 	if (!array)
-		ft_exit("Malloc Error\n");
+		ft_exit("Malloc Error\n", NULL);
 	while (i < size)
 		array[i++] = *str++;
 	array[size] = 0;
@@ -99,12 +97,12 @@ char	*get_path(char *arg, char **env)
 	{
 		dir = cut(path, ft_strichr(path, ':'));
 		bin = ft_join_path(dir, arg);
-		free(dir);
 		if (access(bin, F_OK) == 0)
 			return (bin);
 		free(bin);
-		path +=
+		path += ft_strichr(path, ':') + 1;
 	}
+	return (arg);
 }
 
 void	ft_exec(char *cmd, char **env)
@@ -112,9 +110,13 @@ void	ft_exec(char *cmd, char **env)
 	char	**args;
 	char	*path;
 
+	if (ft_strlen(cmd) == 0)
+		ft_exit("command not found\n", NULL);
 	args = ft_split(cmd, ' ');
 	if ((ft_strichr(args[0], '/')) > -1)
 		path = args[0];
 	else
 		path = get_path(args[0], env);
+	execve(path, args, env);
+	ft_exit("command not found: ", cmd);
 }
