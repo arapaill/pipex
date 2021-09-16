@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arapaill <arapaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 11:33:13 by user42            #+#    #+#             */
-/*   Updated: 2021/08/11 10:41:19 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/16 17:15:34 by arapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,5 @@ int	main(int argc, char **argv, char **env)
 		ft_exit("Failed to connect infile with STDIN", NULL);
 	if (dup2(out, STDOUT) == -1)
 		ft_exit("Failed to connect STDOUT with pipe's WRITE END", NULL);
-	ft_pipex(argv[2], env, in);
-	ft_exec(argv[3], env);
+	ft_pipex(argv, env, in, out);
 }

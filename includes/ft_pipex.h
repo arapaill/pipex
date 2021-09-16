@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pipex.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arapaill <arapaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 11:36:23 by user42            #+#    #+#             */
-/*   Updated: 2021/08/10 16:46:01 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/16 17:15:50 by arapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,14 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 char	*ft_strdup(const char *s);
 size_t	ft_strlen(const char *str);
+char	*ft_strjoin(char *s1, char *s2);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
 
 /*
 ** pipex
 */
 
-void	ft_pipex(char *cmd, char **env, int in);
+void	ft_pipex(char **argv, char **env, int in, int out);
 void	ft_exec(char *cmd, char **env);
 
 #endif

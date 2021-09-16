@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
+#    By: arapaill <arapaill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/05 11:29:21 by user42            #+#    #+#              #
-#    Updated: 2021/08/11 10:52:25 by user42           ###   ########.fr        #
+#    Updated: 2021/09/16 16:37:15 by arapaill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 SRC = 	srcs/main.c srcs/pipex.c
 LIB_SRC = srcs/libft/ft_exit.c srcs/libft/ft_split.c srcs/libft/ft_strichr.c \
-		srcs/libft/ft_strncmp.c srcs/libft/ft_strlcpy.c srcs/libft/ft_strdup.c
+		srcs/libft/ft_strncmp.c srcs/libft/ft_strlcpy.c srcs/libft/ft_strdup.c \
+		srcs/libft/ft_strjoin.c srcs/libft/ft_memcpy.c
 NAME = pipex
 LIB = ar rcs
 
