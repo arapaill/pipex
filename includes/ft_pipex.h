@@ -6,7 +6,7 @@
 /*   By: arapaill <arapaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 11:36:23 by user42            #+#    #+#             */
-/*   Updated: 2021/09/21 08:54:24 by arapaill         ###   ########.fr       */
+/*   Updated: 2021/09/21 13:48:38 by arapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ char	*ft_strdup(const char *s);
 size_t	ft_strlen(const char *str);
 char	*ft_strjoin(char *s1, char *s2);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
+char	*ft_strjoin_free(char *s1, char *s2);
 
 /*
 ** pipex

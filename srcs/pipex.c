@@ -6,11 +6,29 @@
 /*   By: arapaill <arapaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 11:33:07 by user42            #+#    #+#             */
-/*   Updated: 2021/09/21 08:54:03 by arapaill         ###   ########.fr       */
+/*   Updated: 2021/09/22 08:37:55 by arapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_pipex.h"
+
+void	need_space(int pipefd[2], int out, char **argv, char **env)
+{
+	pid_t	pid_two;
+
+	pid_two = fork();
+	if (pid_two == -1)
+		ft_exit("Failed to create a fork\n", NULL);
+	if (!pid_two)
+	{	
+		close(pipefd[1]);
+		dup2(pipefd[0], STDIN);
+		dup2(out, STDOUT);
+		ft_exec(argv[3], env);
+	}
+	else
+		close(out);
+}
 
 void	ft_pipex(char **argv, char **env, int in, int out)
 {
@@ -20,6 +38,8 @@ void	ft_pipex(char **argv, char **env, int in, int out)
 	if (pipe(pipefd) == -1)
 		ft_exit("Failed to create a pipe\n", NULL);
 	pid = fork();
+	if (pid == -1)
+		ft_exit("Failed to create a fork\n", NULL);
 	if (!pid)
 	{
 		close(pipefd[0]);
@@ -29,11 +49,9 @@ void	ft_pipex(char **argv, char **env, int in, int out)
 	}
 	else
 	{
-		close(pipefd[1]);
-		dup2(pipefd[0], STDIN);
-		dup2(out, STDOUT);
 		waitpid(pid, NULL, 0);
-		ft_exec(argv[3], env);
+		close(in);
+		need_space(pipefd, out, argv, env);
 	}
 }
 
@@ -55,6 +73,16 @@ char	**get_path(char **env)
 	return (path);
 }
 
+void	free_array(char **array)
+{
+	int		i;
+
+	i = -1;
+	while (array[++i])
+		free (array[i]);
+	free(array);
+}
+
 void	ft_exec(char *cmd, char **env)
 {
 	char	**args;
@@ -72,9 +100,12 @@ void	ft_exec(char *cmd, char **env)
 		if (args[0][0] != '/')
 		{
 			tmp = ft_strjoin(path[i], "/");
-			tmp = ft_strjoin(tmp, args[0]);
+			tmp = ft_strjoin_free(tmp, args[0]);
 		}
 		execve(tmp, args, env);
+		free(tmp);
 	}
+	free_array(args);
+	free_array(path);
 	ft_exit("command not found: ", cmd);
 }
